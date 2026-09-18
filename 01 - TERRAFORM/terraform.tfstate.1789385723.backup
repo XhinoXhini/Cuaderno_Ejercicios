@@ -1,0 +1,84 @@
+{
+  "version": 4,
+  "terraform_version": "1.16.2",
+  "serial": 4,
+  "lineage": "ec0fedc0-d678-7814-217c-b38631ecc193",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "website",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": null,
+            "arn": "arn:aws:s3:::devops-practica-0edcd77c897989e8ab60f9b90d",
+            "bucket": "devops-practica-0edcd77c897989e8ab60f9b90d",
+            "bucket_domain_name": "devops-practica-0edcd77c897989e8ab60f9b90d.s3.amazonaws.com",
+            "bucket_namespace": "global",
+            "bucket_prefix": "devops-practica-",
+            "bucket_region": null,
+            "bucket_regional_domain_name": "devops-practica-0edcd77c897989e8ab60f9b90d.s3.us-east-1.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": false,
+            "grant": [
+              {
+                "id": "0d7775b4ed370fb0c355af43e70beb38c2387d61a58fef55871ec677a8ec7be1",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z3AQBSTGFYJSTF",
+            "id": "devops-practica-0edcd77c897989e8ab60f9b90d",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": null,
+            "object_lock_enabled": null,
+            "policy": "",
+            "region": "us-east-1",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": null,
+            "tags_all": null,
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": false,
+                "mfa_delete": false
+              }
+            ],
+            "website": [],
+            "website_domain": null,
+            "website_endpoint": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

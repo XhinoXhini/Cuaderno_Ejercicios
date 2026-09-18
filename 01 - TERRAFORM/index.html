@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Practica DevOps 00: publicacion de una web estatica en AWS S3 con Terraform, IA y MCP.">
+  <title>DEVOPS 00 — Publicación de una web estática en AWS S3 con IA + MCP | Xhino</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Inicio">DEVOPS<span>00</span></a>
+    <nav aria-label="Navegación principal">
+      <a href="#arquitectura">Arquitectura</a>
+      <a href="#flujo">Flujo</a>
+      <a href="#conceptos">Conceptos</a>
+      <a href="#comandos">Comandos</a>
+      <a href="#resultado">Resultado</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <p class="eyebrow">PRACTICA DEVOPS 00 <span>•</span> AWS ACADEMY LEARNER LAB</p>
+      <h1>Del código a una web <em>publicada</em> en AWS S3.</h1>
+      <p class="hero-copy">
+        Demostración del ciclo completo de entrega continua y desarrollo asistido por IA: desarrollo en Visual Studio Code mediante Gemini CLI / Claude Code integrado con MCP (Model Context Protocol), aprovisionamiento de infraestructura con Terraform y despliegue automatizado con AWS CLI en Amazon S3.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="#arquitectura">Ver Arquitectura &darr;</a>
+        <a class="button button-secondary" href="#comandos">Comandos de Despliegue</a>
+      </div>
+      <div class="hero-stamp" aria-hidden="true">
+        <strong>IaC</strong>
+        <small>TF &rarr; S3</small>
+      </div>
+    </section>
+
+    <!-- Visual Architecture Section -->
+    <section class="architecture-section" id="arquitectura">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">DISEÑO DE LA SOLUCIÓN</p>
+          <h2>Cadena de integración: IA + MCP + Terraform + S3.</h2>
+        </div>
+      </div>
+      <div class="diagram-container">
+        <img src="assets/architecture-flow.svg" alt="Diagrama de Arquitectura DevOps 00: VS Code, Asistente IA, Servidor MCP, Terraform, AWS CLI y Bucket S3" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Pipeline Flow Section -->
+    <section class="flow-band" id="flujo">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">EL RECORRIDO</p>
+          <h2>Flujo de desarrollo y publicación.</h2>
+        </div>
+      </div>
+      <div class="flow-list">
+        <article>
+          <b>01</b>
+          <h3>Visual Studio Code</h3>
+          <p>Entorno principal de desarrollo donde se crea y estructura el proyecto (HTML5, CSS modular, JS y manifiestos de Terraform).</p>
+        </article>
+        <article>
+          <b>02</b>
+          <h3>IA + MCP</h3>
+          <p>El asistente inteligente interactúa directamente con el workspace a través del servidor MCP de sistema de archivos (<code>@modelcontextprotocol/server-filesystem</code>).</p>
+        </article>
+        <article>
+          <b>03</b>
+          <h3>Terraform (IaC)</h3>
+          <p>Gestiona la infraestructura en AWS de forma declarativa, idempotente y reproducible: bucket S3 y configuración de website hosting.</p>
+        </article>
+        <article>
+          <b>04</b>
+          <h3>S3 Website Serving</h3>
+          <p>AWS CLI sincroniza los archivos hacia el bucket S3, entregando la web a través del endpoint HTTP público o controlado por AWS Academy.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Core Concepts Section -->
+    <section class="concepts" id="conceptos">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">CONCEPTOS FUNDAMENTALES</p>
+          <h2>Las tres piezas angulares del despliegue.</h2>
+        </div>
+      </div>
+      <div class="concept-grid">
+        <article class="concept terraform">
+          <span class="number">01</span>
+          <h3>Terraform</h3>
+          <p>
+            Herramienta de Infraestructura como Código (IaC) de HashiCorp. Permite definir la infraestructura en ficheros declarativos HCL (<code>main.tf</code>), controlar el estado mediante <code>terraform.tfstate</code> y predecir cambios con <code>terraform plan</code> antes de aplicarlos con <code>terraform apply</code>.
+          </p>
+        </article>
+        <article class="concept s3">
+          <span class="number">02</span>
+          <h3>Amazon S3</h3>
+          <p>
+            Simple Storage Service es un servicio de almacenamiento de objetos altamente disponible y escalable. Mediante la característica <em>Static Website Hosting</em>, transforma el bucket en un servidor web HTTP para servir directamente <code>index.html</code>, hojas de estilo, scripts y assets multimedia.
+          </p>
+        </article>
+        <article class="concept mcp">
+          <span class="number">03</span>
+          <h3>Model Context Protocol</h3>
+          <p>
+            MCP es un estándar abierto desarrollado por Anthropic que conecta modelos de lenguaje con herramientas y fuentes de datos locales o remotas. A diferencia de un chatbot aislado, un agente con MCP puede explorar archivos, ejecutar validaciones y operar con seguridad sobre el proyecto.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Interactive Commands Helper -->
+    <section class="interactive-section" id="comandos">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SEPARACIÓN DE RESPONSABILIDADES</p>
+          <h2>Comandos de ejecución en PowerShell.</h2>
+        </div>
+      </div>
+
+      <div class="command-box">
+        <div class="command-box-header">
+          <span>Paso 1: Infraestructura con Terraform (IaC)</span>
+          <button class="copy-btn" data-target="cmd-terraform">Copiar comandos</button>
+        </div>
+        <pre class="command-snippet" id="cmd-terraform"><code>terraform init
+terraform validate
+terraform plan
+terraform apply -auto-approve
+terraform state list</code></pre>
+      </div>
+
+      <div class="command-box">
+        <div class="command-box-header">
+          <span>Paso 2: Publicación de Aplicación con AWS CLI</span>
+          <button class="copy-btn" data-target="cmd-publish">Copiar comando</button>
+        </div>
+        <pre class="command-snippet" id="cmd-publish"><code>.\publish.ps1 -BucketName (terraform output -raw bucket_name)</code></pre>
+      </div>
+    </section>
+
+    <!-- Result / Status Section -->
+    <section class="result" id="resultado">
+      <div>
+        <p class="eyebrow">ESTADO DEL PROYECTO</p>
+        <h2>Infraestructura declarada, aplicación sincronizada.</h2>
+        <p id="client-status-meta" style="font-family: 'DM Mono', monospace; font-size: 0.85rem; margin-top: 15px; color: #555;">
+          Verificando estado del entorno...
+        </p>
+      </div>
+      <div class="result-note">
+        <span class="status-dot"></span>
+        <p>Diseñada en VS Code + IA<br><strong>Publicada en Amazon S3</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span><strong>DEVOPS 00</strong> &bull; Práctica AWS Academy</span>
+    <span>Terraform &bull; Amazon S3 &bull; MCP &bull; AWS CLI</span>
+    <span>Alumno: <strong>Xhino</strong></span>
+  </footer>
+</body>
+</html>
