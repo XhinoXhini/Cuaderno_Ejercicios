@@ -1,0 +1,5 @@
+nombre_proyecto      = "proyecto-final"
+region               = "us-east-1"
+vpc_cidr             = "10.90.0.0/16"
+subnet_publica_cidr  = "10.90.1.0/24"
+subnet_privada_cidr  = "10.90.2.0/24"

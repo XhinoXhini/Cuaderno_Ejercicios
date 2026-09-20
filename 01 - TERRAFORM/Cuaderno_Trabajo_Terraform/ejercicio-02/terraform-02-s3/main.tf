@@ -2,7 +2,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.67.0"
+      version = "4.67.0"
     }
   }
 }
@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "bucket_aula" {
-  bucket = "jill-peren-155484411546"
+  bucket = "jill-peren-1554844115888"
 
   tags = {
     Name = "terraform-s3-aula"
